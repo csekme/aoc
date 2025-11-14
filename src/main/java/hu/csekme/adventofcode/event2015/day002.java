@@ -6,17 +6,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @Component
-public class day001 implements CommandLineRunner {
-
-
-
+public class day002 implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("2015/input-day-01.txt")) {
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("2015/input-day-02.txt")) {
             Objects.requireNonNull(inputStream, "Resource not found: 2015/input-day-02.txt");
             String content = new String(inputStream.readAllBytes());
             int floor = content.chars()
