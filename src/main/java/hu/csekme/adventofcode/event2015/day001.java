@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @Component
@@ -19,6 +20,19 @@ public class day001 implements CommandLineRunner {
                     .sum();
 
             log.info("Final floor: {}", floor);
+
+            floor = 0;
+            for (int i = 1; i <= content.length(); i++) {
+                if (content.charAt(i - 1) == '(') {
+                    floor++;
+                } else if (content.charAt(i - 1) == ')') {
+                    floor--;
+                }
+                if (floor == -1) {
+                    log.info("Position of first basement entry: {}", i);
+                    break;
+                }
+            }
 
         }
     }
