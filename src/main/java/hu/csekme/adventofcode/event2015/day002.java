@@ -1,39 +1,37 @@
 package hu.csekme.adventofcode.event2015;
 
+import hu.csekme.adventofcode.service.FileService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.io.InputStream;
-import java.util.Objects;
+import java.util.Collection;
+import java.util.Optional;
 
 @Slf4j
 @Component
+@AllArgsConstructor
 public class day002 implements CommandLineRunner {
+
+    final FileService fileService;
+
     @Override
-    public void run(String... args) throws Exception {
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("2015/input-day-02.txt")) {
-            Objects.requireNonNull(inputStream, "Resource not found: 2015/input-day-02.txt");
-            String content = new String(inputStream.readAllBytes());
-            int floor = content.chars()
-                    .map(c -> c == '(' ? 1 : c == ')' ? -1 : 0)
-                    .sum();
+    public void run(String... args) {
 
-            log.info("Final floor: {}", floor);
-
-            floor = 0;
-            for (int i = 1; i <= content.length(); i++) {
-                if (content.charAt(i - 1) == '(') {
-                    floor++;
-                } else if (content.charAt(i - 1) == ')') {
-                    floor--;
-                }
-                if (floor == -1) {
-                    log.info("Position of first basement entry: {}", i);
-                    break;
-                }
+        int l,w,h;
+        Optional<Collection<String>> optionalLines = fileService.readFileLines("2015/input-day-02.txt");
+        if (optionalLines.isPresent()) {
+            Collection<String> fileLines = optionalLines.get();
+            int totalPaper = 0;
+            for (String line : fileLines) {
+                String[] dimensions = line.split("x");
+                l = Integer.parseInt(dimensions[0]);
+                w = Integer.parseInt(dimensions[1]);
+                h = Integer.parseInt(dimensions[2]);
+                totalPaper += ((2*l*w) + (2*w*h) + (2*h*l)) + Math.min(Math.min(l*w, w*h), h*l);
             }
-
+            log.info("Total paper: {}", totalPaper);
         }
+
     }
 }

@@ -9,7 +9,6 @@ import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-@Component
 public class day001 implements CommandLineRunner {
 
 
