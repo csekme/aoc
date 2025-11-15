@@ -4,8 +4,6 @@ import hu.csekme.adventofcode.service.FileService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -13,7 +11,6 @@ import java.util.Optional;
 
 @Slf4j
 @AllArgsConstructor
-@Component
 public class day005 implements CommandLineRunner {
 
     final FileService fileService;
