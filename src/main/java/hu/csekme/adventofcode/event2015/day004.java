@@ -14,7 +14,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Slf4j
-@Component
 @AllArgsConstructor
 public class day004 implements CommandLineRunner {
 
