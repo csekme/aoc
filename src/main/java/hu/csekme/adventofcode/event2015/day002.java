@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Slf4j
-@Component
 @AllArgsConstructor
 public class day002 implements CommandLineRunner {
 
