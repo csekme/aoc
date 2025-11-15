@@ -10,7 +10,6 @@ import org.springframework.util.StringUtils;
 import java.util.*;
 
 @Slf4j
-@Component
 @AllArgsConstructor
 public class day003 implements CommandLineRunner {
 
