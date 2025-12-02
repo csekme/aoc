@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Slf4j
 @AllArgsConstructor
-@Component
 public class day006 implements CommandLineRunner {
 
     final FileService fileService;
